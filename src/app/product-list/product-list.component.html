@@ -1,0 +1,41 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="jumbotron">
+    <h3>
+      Product Management
+    </h3>
+</div>
+<div class="card">
+<div class="card-header">
+  Product List
+</div>
+<div class="table-responsive">
+  <table class="table" *ngIf="products && products.length">
+    <thead>
+      <tr>
+        <th>
+          <button class="btn btn-primary" (click)="onClick()">
+            <span *ngIf="image;else condition1">Hide Image</span>
+            <ng-template #condition1>Show Image</ng-template>
+          </button>
+        </th>
+        <th>Product</th>
+        <th>Code</th>
+        <th>Available</th>
+        <th>Price</th>
+        <th>5 Star Rating</th>
+
+      </tr>
+    </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td><img *ngIf="image" [src]="product.imageUrl" [title]="product.productName" [style.width.px]="imgWidth" [style.height.px]="imgHeight" alt=""></td>
+      <td>{{product.productName}}</td>
+      <td>{{product.productCode}}</td>
+      <td>{{product.releaseDate}}</td>
+      <td>{{product.price |currency:'INR'}}</td>
+      <td>{{product.starRating}}</td>
+  </tr>
+  </tbody>
+  </table>
+</div>
+</div>
